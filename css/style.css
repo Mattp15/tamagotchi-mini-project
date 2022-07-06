@@ -8,6 +8,11 @@ body{
     justify-content: center;
     margin-top: 10%;
 }
+#wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    width:960px;
+}
 main {
     background-image: url('../img/silas-baisch-f4bfvVXKZP8-unsplash.jpg');
     background-size: 60rem;
@@ -20,8 +25,8 @@ main {
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
-    justify-content: space-around; 
-    margin-top: 55%; 
+    justify-content: center; 
+    margin-top: 100px; 
      
 }
 #feed, #dark, #play, #submit{
@@ -41,16 +46,19 @@ color: white;
     border-right: 4px solid #A87D25;
 }
 #feed:hover, #dark:hover, #play:hover, #submit:hover{
-    opacity: 80%;
+    opacity: 85%;
 }
-#feed{
-    margin-left: 200px;
+#feed, #play{
+    margin: 20px;
 }
+
 #dark{
-    margin-right: 200px;
+    position: absolute;
+    margin-top: -46px;
+    margin-left: 891px;
 }
 #player-info{
-    position: absolute;
+    margin-left: 50px;
     font-size: 2em;
     margin-top: -3.5%;
     display: block;
@@ -68,31 +76,31 @@ color: white;
     display: none;
 }
 #egg{
-    width: 15%;
+    width: 280px;
     height: auto;
-    margin-left: 40%;
-    margin-top: 15%;
-    display: none;
+    margin-left: 400px;
+    margin-top: -320px;
+    /* display: none; */
 }
 #baby{
-    width: 30%;
+    width: 400px;
     height: auto;
-    margin-left: 32%;
-    margin-top: 8%;
+    margin-left: 550px;
+    margin-top: 130px;
     display: none;
 }
 #child{
-    width: 40%;
+    width: 500px;
     height: auto;
-    margin-left: 25%;
-    margin-top: -2%;
+    margin-left: 500px;
+    margin-top: 75px;
     display: none;
 }
 #adult{
-    width: 40%;
+    width: 400px;
     height: auto;
-    margin-left: 30%;
-    margin-top: 2%;
+    margin-left: 550px;
+    margin-top: 75px;
     display: none;
 }
 #egg, #baby, #child, #adult, #for-gifs{
@@ -100,6 +108,15 @@ color: white;
 }
 #for-gifs{
     /* border: 10px solid white; */
-    margin-left: 35%;
-    margin-top: 20%;
+    margin-left: 480px;
+    margin-top: 250px;
+}
+ul {
+    list-style: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 200px;
+    height: 300px;
+    font-style: bold;
+    font-size: 2em;
+    margin-top: 100px;
 }
