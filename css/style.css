@@ -72,7 +72,9 @@ color: white;
 #player-title{
     position: absolute;
     margin-top: -5%;
+    margin-left: 400px;
     font-size: 4em;
+    color: #2CB2C7;
     display: none;
 }
 #egg{
@@ -146,5 +148,5 @@ article{
     background-color: white;
     width: 61rem;
     height: 32.5rem;
-    /* display: none; */
+    display: block;
 }

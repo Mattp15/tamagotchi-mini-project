@@ -23,4 +23,12 @@ let playing = document.querySelector('#playing-gif');
 let scared = document.querySelector('#scared-gif');
 //button functions
 
+//button eventwatch
+submit.addEventListener('click', ()=>{
+// playerTitle.innerText = playerName;
+playerTitle.style.display = 'block';
+document.querySelector('#player-info').style.display = 'none';
+rules.style.display = 'none';
+})
+//page keeps force refreshing??????????
 //function on timeintervol that checks for death?
