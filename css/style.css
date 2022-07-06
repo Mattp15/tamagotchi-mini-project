@@ -3,6 +3,7 @@ html {
 
 }
 body{
+    display: -webkit-flex;
     display: flex;
     justify-content: center;
     margin-top: 10%;
@@ -15,7 +16,7 @@ main {
 
 }
 #buttons {
-    
+    display: -webkit-flex;
     display: flex;
     flex-direction: row;
     justify-content: space-around; 
@@ -23,8 +24,18 @@ main {
 }
 #feed, #dark, #play{
 font-size: 2em;
-padding: 5%;
-
+border-radius: 5px;
+border: 3px solid pink;
+background-color: #35DCF2;
+border-bottom: 4px solid grey;
+border-left: 4px solid grey;
+}
+#feed:active, #dark:active, #play:active{
+    background-color: #208491;
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+    border-top: 4px solid grey;
+    border-right: 4px solid grey;
 }
 #feed{
     margin-left: 200px;
