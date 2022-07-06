@@ -29,7 +29,7 @@ main {
     margin-top: 100px; 
      
 }
-#feed, #dark, #play, #submit{
+#feed, #dark, #play, #submit, #sleep{
 font-size: 2em;
 border-radius: 5px;
 border: 3px solid pink;
@@ -38,17 +38,17 @@ border-bottom: 4px solid grey;
 border-left: 4px solid grey;
 color: white;
 }
-#feed:active, #dark:active, #play:active, #submit:active{
+#feed:active, #dark:active, #play:active, #submit:active, #sleep:active{
     background-color: #208491;
     border-bottom: 3px solid #A87D25;
     border-left: 3px solid #A87D25;
     border-top: 4px solid #A87D25;
     border-right: 4px solid #A87D25;
 }
-#feed:hover, #dark:hover, #play:hover, #submit:hover{
+#feed:hover, #dark:hover, #play:hover, #submit:hover, #sleep:hover{
     opacity: 85%;
 }
-#feed, #play{
+#feed, #play, #sleep{
     margin: 20px;
 }
 
@@ -138,4 +138,13 @@ ul {
 #eating-gif{
     margin-top: -350px;
     display: none;
+}
+article{
+    position: absolute;
+    margin-top: -436px;
+    font-size: 2em;
+    background-color: white;
+    width: 61rem;
+    height: 32.5rem;
+    /* display: none; */
 }
