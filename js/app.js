@@ -2,7 +2,7 @@
 const submit = document.querySelector('#submit');
 const darkMode = document.querySelector('#dark');
 const feed = document.querySelector('#feed');
-const play = document.querySelector('#play');
+const play = document.getElementById('play');
 const sleep = document.querySelector('#sleep');
 
 //text displays
@@ -22,13 +22,13 @@ let adult = document.querySelector('#adult');
 let eating = document.querySelector('#eating-gif');
 let playing = document.querySelector('#playing-gif');
 let scared = document.querySelector('#scared-gif');
+let sleepingGif = document.querySelector('#sleeping-gif');
 //button functions
 
 
 const submitFunction = ()=>{
     
     let x = document.getElementById('playerName').value;
-    console.log(x);
     if (x.length > 0){
         eggName = x;
     playerTitle.innerText = x;
@@ -36,13 +36,9 @@ const submitFunction = ()=>{
     playerTitle.style.display = 'block';
     document.querySelector('#player-info').style.display = 'none';
     rules.style.display = 'none';
-    const newPet = new Pet(eggName);
+    egg.style.display = "block";
 }
-//button eventwatch
-submit.addEventListener('onsubmit', submitFunction);
-// submit.addEventListener('submit', 
 
-//function on timeintervol that checks for death?
 class Pet {
     constructor(name){
         this.name = name;
@@ -50,4 +46,49 @@ class Pet {
         this.bored = 2;
         this.sleepy = 0;
     }
+    isDead(){
+        if (this.hunger > 10 || this.bored > 10 || this.sleepy > 10){
+            alert('YOUR PET DIED\nRESET TO PLAY AGAIN');
+        }
+    }
+    feedingClick(){
+        if(this.hunger === 0){
+            this.bored += 5;
+        }
+        const x = Math.floor(Math.random()*this.hunger);
+        if (x === this.hunger){
+            this.sleep += 2;
+            this.hunger -= x;
+        }else{
+        this.hunger -= x;
+        }
+    
+    }
+    sleepingClick(){
+        if(this.sleepy === 0){
+            this.bored += 5;
+        }
+        const x = Math.floor(Math.random()*this.sleepy);
+        this.hunger += 1;
+        this.sleepy -= x;
+        sleepingGif.style.display = "block";
+        setTimeout(() => {sleepingGif.style.display = "none"}, 2000);
+        //change display text
+    }
+    playingClick(){
+        if (this.bored <= 1){
+            this.sleepy ++;
+            this.hunger ++;
+        }
+        const x = Math.floor(Math.random()*this.bored);
+        playing.style.display = "block";
+        setTimeout(() => {playing.style.display = "none"}, 2000);
+        console.log("playing");
+        //update display
+    }
 }
+const newPet = new Pet();
+//button eventwatch
+play.addEventListener('click', newPet.playingClick);
+sleep.addEventListener('click', newPet.sleepingClick);
+//function on timeintervol that checks for death?

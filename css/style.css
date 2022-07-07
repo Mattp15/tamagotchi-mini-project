@@ -29,7 +29,7 @@ main {
     margin-top: 100px; 
      
 }
-#feed, #dark, #play, #submit, #sleep{
+#feed, #reset, #play, #submit, #sleep{
 font-size: 2em;
 border-radius: 5px;
 border: 3px solid pink;
@@ -38,24 +38,23 @@ border-bottom: 4px solid grey;
 border-left: 4px solid grey;
 color: white;
 }
-#feed:active, #dark:active, #play:active, #submit:active, #sleep:active{
+#feed:active, #reset:active, #play:active, #submit:active, #sleep:active{
     background-color: #208491;
     border-bottom: 3px solid #A87D25;
     border-left: 3px solid #A87D25;
     border-top: 4px solid #A87D25;
     border-right: 4px solid #A87D25;
 }
-#feed:hover, #dark:hover, #play:hover, #submit:hover, #sleep:hover{
+#feed:hover, #reset:hover, #play:hover, #submit:hover, #sleep:hover{
     opacity: 85%;
 }
 #feed, #play, #sleep{
     margin: 20px;
 }
 
-#dark{
+#reset{
     position: absolute;
-    margin-top: -46px;
-    margin-left: 891px;
+    margin-left: 400px;
 }
 #player-info{
     margin-left: 50px;
@@ -72,7 +71,7 @@ color: white;
 #player-title{
     position: absolute;
     margin-top: -5%;
-    margin-left: 400px;
+    margin-left: 350px;
     font-size: 4em;
     color: #2CB2C7;
     display: none;
@@ -126,14 +125,14 @@ ul {
     position: absolute;
     width: 300px;
     height: auto;
-    margin-left: 350px;
+    margin-left: 380px;
 }
 #scared-gif{
     margin-top: -300px;
     display: none;
 }
 #playing-gif{
-    margin-top: -400px;
+    margin-top: -360px;
     display: none;
     
 }
