@@ -79,11 +79,13 @@ class Pet {
         setTimeout(() => {playing.style.display = "none"}, 2000);
     }
     updateHunger(){
-        hungerStat.innerText = this.hunger;
-        console.log(this.hunger);
-        if (this.hunger > 10){
-            this.isDead();
-        }
+        setInterval(() => {
+            hungerStat.innerText = this.hunger;
+            console.log(this.hunger);
+            if (this.hunger > 10){
+                this.isDead();
+            }
+        }, 500);
 
     }
     updateSleepy(){
@@ -102,8 +104,8 @@ class Pet {
     }
     updateAge(){
         setInterval(() => {
-            ageStat.innerText = this.age
-            if (this.age === 12){
+            ageStat.innerText = this.age;
+            if (this.age >= 12 && this.age <21){
                 baby.style.display = "none";
                 child.style.display = "block";
             }else if (this.age >= 21){
@@ -113,9 +115,9 @@ class Pet {
         }, 500)
     }
     addHunger(){
-        // setInterval(() => {
+        setInterval(() => {
             this.hunger++;
-        // }, 1000)
+        }, 10000)
     }
     addSleepy(){
         setInterval(() => {
@@ -130,16 +132,21 @@ class Pet {
     addAge(){
         setInterval(() => {
             this.age++
-        }, 15000)
+        }, 1000)
     }
 }
 const newPet = new Pet();
 //button eventwatch
-play.addEventListener('click', newPet.playingClick);
-sleep.addEventListener('click', newPet.sleepingClick);
-feed.addEventListener('click', newPet.feedingClick)
+play.addEventListener('click', () => {
+    newPet.playingClick();
+});
+sleep.addEventListener('click', () => {
+    newPet.sleepingClick()
+});
+feed.addEventListener('click', () => {
+    newPet.feedingClick()
+})
 
-//function on timeintervol that checks for death?
 
 //start game
 const eggHatch = () => {
@@ -147,14 +154,9 @@ const eggHatch = () => {
     child.style.display = 'block';
     newPet.updateAge();
     newPet.updateBoredom();
-    setInterval(() => {
-    newPet.updateHunger()
-    }, 500);
-    newPet.updateSleepy();
-    setInterval(() => {
-        
-        newPet.addHunger();
-    }, 1000);
+    newPet.updateHunger();
+    newPet.updateSleepy();   
+    newPet.addHunger();
     newPet.addBoredom();
     newPet.addSleepy();
     newPet.addAge();
