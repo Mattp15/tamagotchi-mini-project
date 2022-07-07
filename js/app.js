@@ -51,59 +51,54 @@ class Pet {
             document.querySelector('main').style.display = "none";
     }
     feedingClick(){
-        if(this.hunger === 0){
-            this.bored += 5;
-        }
-        const x = Math.floor(Math.random()*this.hunger);
-        if (x === this.hunger){
+        
             this.sleep += 2;
-            this.hunger -= x;
-        }else{
-        this.hunger -= x;
-        }
+            this.hunger = 0;
+            console.log(this.hunger);
+        
         eating.style.display = "block";
         setTimeout(() => {eating.style.display = "none"}, 2000);
     }
     sleepingClick(){
-        if(this.sleepy === 0){
-            this.bored += 5;
-        }
-        const x = Math.floor(Math.random()*this.sleepy);
         this.hunger += 1;
-        this.sleepy -= x;
+        this.sleepy = 0;
         sleepingGif.style.display = "block";
-        setTimeout(() => {sleepingGif.style.display = "none"}, 2000);
+        document.querySelector('html').style.backgroundColor = 'black';
+        setTimeout(() => {
+            sleepingGif.style.display = "none";
+            document.querySelector('html').style.backgroundColor = '';
+        }, 2000);
     }
     playingClick(){
         if (this.bored <= 1){
             this.sleepy ++;
             this.hunger ++;
         }
-        const x = Math.floor(Math.random()*this.bored);
+        this.bored = 0;
         playing.style.display = "block";
         setTimeout(() => {playing.style.display = "none"}, 2000);
     }
     updateHunger(){
-        setInterval(() => {
         hungerStat.innerText = this.hunger;
+        console.log(this.hunger);
         if (this.hunger > 10){
-            this.isDead;
-        }}, 1000)
+            this.isDead();
+        }
 
     }
     updateSleepy(){
         setInterval(() => {
             sleepStat.innerText = this.sleepy;
         if (this.sleepy > 10){
-            this.isDead;
-        }}, 1000);
+            this.isDead();
+        }}, 500);
     }
     updateBoredom(){
         setInterval(() => {
             boredomStat.innerText = this.bored;
         if (this.bored > 10){
             this.isDead();
-        }}, 1000);
+        }}, 500);
     }
     updateAge(){
         setInterval(() => {
@@ -115,12 +110,12 @@ class Pet {
                 child.style.display = 'none';
                 adult.style.display = "block";
             }
-        }, 1000)
+        }, 500)
     }
     addHunger(){
-        setInterval(() => {
+        // setInterval(() => {
             this.hunger++;
-        }, 12000)
+        // }, 1000)
     }
     addSleepy(){
         setInterval(() => {
@@ -130,12 +125,12 @@ class Pet {
     addBoredom(){
         setInterval(() => {
             this.bored++;
-        }, 100)
+        }, 9000)
     }
     addAge(){
         setInterval(() => {
             this.age++
-        }, 1000)
+        }, 15000)
     }
 }
 const newPet = new Pet();
@@ -152,9 +147,14 @@ const eggHatch = () => {
     child.style.display = 'block';
     newPet.updateAge();
     newPet.updateBoredom();
-    newPet.updateHunger();
+    setInterval(() => {
+    newPet.updateHunger()
+    }, 500);
     newPet.updateSleepy();
-    newPet.addHunger();
+    setInterval(() => {
+        
+        newPet.addHunger();
+    }, 1000);
     newPet.addBoredom();
     newPet.addSleepy();
     newPet.addAge();
