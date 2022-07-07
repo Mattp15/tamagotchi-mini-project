@@ -9,10 +9,10 @@ const sleep = document.querySelector('#sleep');
 const rules = document.querySelector('article');
 const playerTitle = document.querySelector('#player-title');
 const playerInfo = document.querySelector('form');
-const hungerStat = document.querySelector('li #hunger-stat');
-const sleepStat = document.querySelector('li #sleep-stat');
-const boredomStat = document.querySelector('li #bordeom-stat');
-const ageStat = document.querySelector('li #age-stat');
+const hungerStat = document.querySelector('#hunger-stat');
+const sleepStat = document.querySelector('#sleep-stat');
+const boredomStat = document.querySelector('#bordeom-stat');
+const ageStat = document.querySelector('#age-stat');
 let eggName = 'Goombus';
 //images and gifs
 let egg = document.querySelector('#egg');
@@ -23,11 +23,7 @@ let eating = document.querySelector('#eating-gif');
 let playing = document.querySelector('#playing-gif');
 let sleepingGif = document.querySelector('#scared-gif');
 
-//button functions
-
-
-const submitFunction = ()=>{
-    
+const submitFunction = ()=>{ 
     let x = document.getElementById('playerName').value;
     if (x.length > 0){
         eggName = x;
@@ -36,7 +32,9 @@ const submitFunction = ()=>{
     playerTitle.style.display = 'block';
     document.querySelector('#player-info').style.display = 'none';
     rules.style.display = 'none';
-    egg.style.display = "block";
+    setTimeout(() => {
+        eggHatch();
+    }, 1000);
 }
 
 class Pet {
@@ -45,11 +43,12 @@ class Pet {
         this.hunger = 1;
         this.bored = 2;
         this.sleepy = 0;
+        this.age = 0;
     }
     isDead(){
-        if (this.hunger > 10 || this.bored > 10 || this.sleepy > 10){
-            alert('YOUR PET DIED\nRESET TO PLAY AGAIN');
-        }
+            // alert('YOUR PET DIED\nRESET TO PLAY AGAIN');
+            console.log('Isdead')
+            document.querySelector('main').style.display = "none";
     }
     feedingClick(){
         if(this.hunger === 0){
@@ -74,7 +73,6 @@ class Pet {
         this.sleepy -= x;
         sleepingGif.style.display = "block";
         setTimeout(() => {sleepingGif.style.display = "none"}, 2000);
-        //change display text
     }
     playingClick(){
         if (this.bored <= 1){
@@ -84,8 +82,60 @@ class Pet {
         const x = Math.floor(Math.random()*this.bored);
         playing.style.display = "block";
         setTimeout(() => {playing.style.display = "none"}, 2000);
-        console.log("playing");
-        //update display
+    }
+    updateHunger(){
+        setInterval(() => {
+        hungerStat.innerText = this.hunger;
+        if (this.hunger > 10){
+            this.isDead;
+        }}, 1000)
+
+    }
+    updateSleepy(){
+        setInterval(() => {
+            sleepStat.innerText = this.sleepy;
+        if (this.sleepy > 10){
+            this.isDead;
+        }}, 1000);
+    }
+    updateBoredom(){
+        setInterval(() => {
+            boredomStat.innerText = this.bored;
+        if (this.bored > 10){
+            this.isDead();
+        }}, 1000);
+    }
+    updateAge(){
+        setInterval(() => {
+            ageStat.innerText = this.age
+            if (this.age === 12){
+                baby.style.display = "none";
+                child.style.display = "block";
+            }else if (this.age >= 21){
+                child.style.display = 'none';
+                adult.style.display = "block";
+            }
+        }, 1000)
+    }
+    addHunger(){
+        setInterval(() => {
+            this.hunger++;
+        }, 12000)
+    }
+    addSleepy(){
+        setInterval(() => {
+            this.sleepy++;
+        }, 8000)
+    }
+    addBoredom(){
+        setInterval(() => {
+            this.bored++;
+        }, 100)
+    }
+    addAge(){
+        setInterval(() => {
+            this.age++
+        }, 1000)
     }
 }
 const newPet = new Pet();
@@ -93,4 +143,21 @@ const newPet = new Pet();
 play.addEventListener('click', newPet.playingClick);
 sleep.addEventListener('click', newPet.sleepingClick);
 feed.addEventListener('click', newPet.feedingClick)
+
 //function on timeintervol that checks for death?
+
+//start game
+const eggHatch = () => {
+    egg.style.display = 'none';
+    child.style.display = 'block';
+    newPet.updateAge();
+    newPet.updateBoredom();
+    newPet.updateHunger();
+    newPet.updateSleepy();
+    newPet.addHunger();
+    newPet.addBoredom();
+    newPet.addSleepy();
+    newPet.addAge();
+}
+
+
