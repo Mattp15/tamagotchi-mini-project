@@ -46,8 +46,7 @@ class Pet {
         this.age = 0;
     }
     isDead(){
-            // alert('YOUR PET DIED\nRESET TO PLAY AGAIN');
-            console.log('Isdead')
+            alert('YOUR PET DIED\nRESET TO PLAY AGAIN');
             document.querySelector('main').style.display = "none";
     }
     feedingClick(){
@@ -81,7 +80,6 @@ class Pet {
     updateHunger(){
         setInterval(() => {
             hungerStat.innerText = this.hunger;
-            console.log(this.hunger);
             if (this.hunger > 10){
                 this.isDead();
             }
@@ -105,12 +103,15 @@ class Pet {
     updateAge(){
         setInterval(() => {
             ageStat.innerText = this.age;
-            if (this.age >= 12 && this.age <21){
-                baby.style.display = "none";
-                child.style.display = "block";
-            }else if (this.age >= 21){
+            console.log(this.age, "1st")
+            if (this.age >= 21){
+                console.log(this.age, "3rd");
                 child.style.display = 'none';
                 adult.style.display = "block";
+            }else if (this.age >= 12){
+                console.log(this.age, "2nd");
+                baby.style.display = "none";
+                child.style.display = "block";
             }
         }, 500)
     }
@@ -151,7 +152,7 @@ feed.addEventListener('click', () => {
 //start game
 const eggHatch = () => {
     egg.style.display = 'none';
-    child.style.display = 'block';
+    baby.style.display = 'block';
     newPet.updateAge();
     newPet.updateBoredom();
     newPet.updateHunger();
