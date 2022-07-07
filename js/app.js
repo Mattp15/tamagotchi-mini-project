@@ -21,8 +21,8 @@ let child = document.querySelector('#child');
 let adult = document.querySelector('#adult');
 let eating = document.querySelector('#eating-gif');
 let playing = document.querySelector('#playing-gif');
-let scared = document.querySelector('#scared-gif');
-let sleepingGif = document.querySelector('#sleeping-gif');
+let sleepingGif = document.querySelector('#scared-gif');
+
 //button functions
 
 
@@ -62,7 +62,8 @@ class Pet {
         }else{
         this.hunger -= x;
         }
-    
+        eating.style.display = "block";
+        setTimeout(() => {eating.style.display = "none"}, 2000);
     }
     sleepingClick(){
         if(this.sleepy === 0){
@@ -91,4 +92,5 @@ const newPet = new Pet();
 //button eventwatch
 play.addEventListener('click', newPet.playingClick);
 sleep.addEventListener('click', newPet.sleepingClick);
+feed.addEventListener('click', newPet.feedingClick)
 //function on timeintervol that checks for death?
