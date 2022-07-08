@@ -32,6 +32,7 @@ const submitFunction = ()=>{
     playerTitle.style.display = 'block';
     document.querySelector('#player-info').style.display = 'none';
     rules.style.display = 'none';
+    egg.style.display = 'block';
     setTimeout(() => {
         eggHatch();
     }, 5000);
@@ -46,8 +47,9 @@ class Pet {
         this.age = 0;
     }
     isDead(){
-            alert('YOUR PET DIED\nRESET TO PLAY AGAIN');
             document.querySelector('main').style.display = "none";
+            playerTitle.style.marginLeft = '200px';
+            playerTitle.innerText = 'YOUR PET HAS DIED';
     }
     feedingClick(){
         
@@ -112,6 +114,12 @@ class Pet {
                 console.log(this.age, "3rd");
                 child.style.display = 'none';
                 adult.style.display = "block";
+                
+                playerTitle.innerText = "YOU SUCCUSSFULLY RAISED YOUR SHARK"
+                playerTitle.style.marginLeft = '-200px';
+                setTimeout(() => {
+                document.querySelector('main').style.display = "none";
+                }, 5000);
             }else if (this.age >= 12){
                 console.log(this.age, "2nd");
                 baby.style.display = "none";
@@ -122,22 +130,22 @@ class Pet {
     addHunger(){
         setInterval(() => {
             this.hunger++;
-        }, 5000)
+        }, 6000)
     }
     addSleepy(){
         setInterval(() => {
             this.sleepy++;
-        }, 7000)
+        }, 5000)
     }
     addBoredom(){
         setInterval(() => {
             this.bored++;
-        }, 4000)
+        }, 6000)
     }
     addAge(){
         setInterval(() => {
             this.age++
-        }, 10000)
+        }, 5000)
     }
 }
 const newPet = new Pet();
