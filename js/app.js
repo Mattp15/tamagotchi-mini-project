@@ -34,7 +34,7 @@ const submitFunction = ()=>{
     rules.style.display = 'none';
     setTimeout(() => {
         eggHatch();
-    }, 1000);
+    }, 5000);
 }
 
 class Pet {
@@ -59,6 +59,9 @@ class Pet {
         setTimeout(() => {eating.style.display = "none"}, 2000);
     }
     sleepingClick(){
+        if(this.sleep <=3){
+            return false;
+        }else{
         this.hunger += 1;
         this.sleepy = 0;
         sleepingGif.style.display = "block";
@@ -67,6 +70,7 @@ class Pet {
             sleepingGif.style.display = "none";
             document.querySelector('html').style.backgroundColor = '';
         }, 2000);
+    }
     }
     playingClick(){
         if (this.bored <= 1){
@@ -118,22 +122,22 @@ class Pet {
     addHunger(){
         setInterval(() => {
             this.hunger++;
-        }, 10000)
+        }, 5000)
     }
     addSleepy(){
         setInterval(() => {
             this.sleepy++;
-        }, 8000)
+        }, 7000)
     }
     addBoredom(){
         setInterval(() => {
             this.bored++;
-        }, 9000)
+        }, 4000)
     }
     addAge(){
         setInterval(() => {
             this.age++
-        }, 1000)
+        }, 10000)
     }
 }
 const newPet = new Pet();
