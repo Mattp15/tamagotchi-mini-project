@@ -46,12 +46,12 @@ class Pet {
         this.sleepy = 0;
         this.age = 0;
     }
-    isDead(){
+    isDead(){//function invoked from update function, ends game 
             document.querySelector('main').style.display = "none";
             playerTitle.style.marginLeft = '200px';
             playerTitle.innerText = 'YOUR PET HAS DIED';
     }
-    feedingClick(){
+    feedingClick(){//feeding function tied to "feeding button" event listener
         
             this.sleep += 2;
             this.hunger = 0;
@@ -60,10 +60,7 @@ class Pet {
         eating.style.display = "block";
         setTimeout(() => {eating.style.display = "none"}, 2000);
     }
-    sleepingClick(){
-        if(this.sleep <=3){
-            return false;
-        }else{
+    sleepingClick(){//sleep function tied to "sleep button" event listener
         this.hunger += 1;
         this.sleepy = 0;
         sleepingGif.style.display = "block";
@@ -72,9 +69,9 @@ class Pet {
             sleepingGif.style.display = "none";
             document.querySelector('html').style.backgroundColor = '';
         }, 2000);
+    
     }
-    }
-    playingClick(){
+    playingClick(){//play function tied to "play button" event listener
         if (this.bored <= 1){
             this.sleepy ++;
             this.hunger ++;
@@ -83,30 +80,23 @@ class Pet {
         playing.style.display = "block";
         setTimeout(() => {playing.style.display = "none"}, 2000);
     }
-    updateHunger(){
+    updateStats(){//interval to update css to js values
         setInterval(() => {
             hungerStat.innerText = this.hunger;
             if (this.hunger > 10){
                 this.isDead();
             }
         }, 500);
-
-    }
-    updateSleepy(){
-        setInterval(() => {
-            sleepStat.innerText = this.sleepy;
-        if (this.sleepy > 10){
-            this.isDead();
-        }}, 500);
-    }
-    updateBoredom(){
         setInterval(() => {
             boredomStat.innerText = this.bored;
         if (this.bored > 10){
             this.isDead();
         }}, 500);
-    }
-    updateAge(){
+        setInterval(() => {
+            sleepStat.innerText = this.sleepy;
+        if (this.sleepy > 10){
+            this.isDead();
+        }}, 500);
         setInterval(() => {
             ageStat.innerText = this.age;
             console.log(this.age, "1st")
@@ -127,22 +117,19 @@ class Pet {
             }
         }, 500)
     }
-    addHunger(){
+    addStats(){//intervols to increase stat's
         setInterval(() => {
             this.hunger++;
         }, 6000)
-    }
-    addSleepy(){
+
         setInterval(() => {
             this.sleepy++;
         }, 5000)
-    }
-    addBoredom(){
+
         setInterval(() => {
             this.bored++;
         }, 6000)
-    }
-    addAge(){
+    
         setInterval(() => {
             this.age++
         }, 5000)
@@ -165,14 +152,8 @@ feed.addEventListener('click', () => {
 const eggHatch = () => {
     egg.style.display = 'none';
     baby.style.display = 'block';
-    newPet.updateAge();
-    newPet.updateBoredom();
-    newPet.updateHunger();
-    newPet.updateSleepy();   
-    newPet.addHunger();
-    newPet.addBoredom();
-    newPet.addSleepy();
-    newPet.addAge();
+    newPet.updateStats();   
+    newPet.addStats();
 }
 
 
